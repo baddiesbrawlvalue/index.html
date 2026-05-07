@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="DWMZ7geS59ohdBDTEw0FKiXWfDGgT6XTrSDWnzcpnSg" />
+    <title>Baddies Brawl Value List</title>
+    <meta name="description" content="Official Baddies Brawl Value List. Accurate trading tool for the community.">
+
+    <link rel="icon" href="https://i.postimg.cc/DWJT0bw2/image.png" type="image/png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Baddies Brawl Value 🌸",
+      "alternateName": ["Baddies Value", "Peheoo Baddies"],
+      "url": "https://peheoo180.github.io/valuebaddiesbrawl/" 
+    }
+    </script>
+    <style>
+        :root {
+            --bg-dark: #050a18;
+            --card-bg: #0d162d;
+            --accent-purple: #561c94;
+            --text-main: #ffffff;
+            --text-sub: #8a99b1;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-red: #ff2d55;
+            --accent-green: #00ff88;
+            --rarity-low: linear-gradient(-45deg, #134e4a, #14532d, #064e3b, #166534);
+            --rarity-mid: linear-gradient(-45deg, #1e3a8a, #1e40af, #1d4ed8, #2563eb);
+            --rarity-high: linear-gradient(-45deg, #4c1d95, #6b21a8, #7e22ce, #581c87);
+        }
+
+        html, body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .header { 
+            position: sticky; top: 0; z-index: 1000; 
+            background: rgba(5, 10, 24, 0.85); 
+            backdrop-filter: blur(20px); 
+            padding: 15px 20px 10px; 
+            border-bottom: 1px solid var(--border-color);
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        
+        .header-top { display: flex; justify-content: space-between; align-items: center; }
+        
+        .header h1 { 
+            font-size: 16px; margin: 0; font-weight: 800; letter-spacing: 0.5px;
+            color: #fff5f7;
+            text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .sakura-petal {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            color: #ffb6c1;
+            font-size: 14px;
+            user-select: none;
+            animation: fall-animation linear forwards;
+        }
+
+        @keyframes fall-animation {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .verified-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 255, 136, 0.06);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            padding: 5px 12px; border-radius: 100px; align-self: flex-start;
+        }
+        .v-dot { width: 6px; height: 6px; background: var(--accent-green); border-radius: 50%; box-shadow: 0 0 8px var(--accent-green); }
+        .v-text { font-size: 10px; color: var(--accent-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .v-sub { font-size: 10px; color: #fff; opacity: 0.8; font-weight: 400; margin-left: 2px; }
+
+        .trade-section { display: none; padding: 10px; background: rgba(0,0,0,0.3); border-bottom: 2px solid var(--accent-purple); }
+        .trade-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .side-title { font-size: 11px; font-weight: 900; text-align: center; margin-bottom: 4px; letter-spacing: 1px; }
+        .trade-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+        .trade-slot { aspect-ratio: 1/1; background: var(--card-bg); border: 1px dashed var(--border-color); border-radius: 6px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; position: relative; }
+        .trade-slot img { width: 85%; height: 85%; object-fit: contain; }
+        .add-plus { color: var(--text-sub); font-size: 10px; font-weight: bold; opacity: 0.5; }
+        .side-total { text-align: center; font-size: 10px; font-weight: bold; color: #ffd700; margin-top: 6px; background: #000; padding: 4px; border-radius: 4px; border: 1px solid var(--border-color); }
+
+        #pickerModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); z-index: 10000; display: none; flex-direction: column; padding: 15px; box-sizing: border-box; }
+        .picker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; overflow-y: auto; padding-bottom: 20px; }
+        .p-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 5px; text-align: center; }
+        .p-card img { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
+        .p-card div { font-size: 9px; color: #fff; margin-top: 4px; white-space: nowrap; overflow: hidden; }
+
+        .search-container { padding: 15px 20px 5px; }
+        #searchInput { 
+            width: 100%; padding: 12px 18px; 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid var(--border-color); 
+            border-radius: 12px; color: white; outline: none; box-sizing: border-box; 
+        }
+        #searchInput:focus { border-color: var(--accent-purple); background: rgba(255, 255, 255, 0.06); }
+        
+        .filter-container { display: flex; gap: 10px; padding: 10px 20px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+        .filter-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-sub); padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 600; cursor: pointer; }
+        .filter-btn.active { background: var(--accent-purple); color: white; }
+        .btn-trade-toggle { background: var(--accent-red) !important; color: white !important; border: none !important; }
+
+        .all-items-title { padding: 10px 20px; font-size: 18px; font-weight: 700; color: #ffffff; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 15px 30px; }
+        .item-card { background: var(--card-bg); border-radius: 18px; overflow: hidden; border: 1px solid var(--border-color); }
+        
+        .image-box { 
+            width: 100%; aspect-ratio: 1.2 / 1; 
+            background: #1a1a1a; 
+            background-size: 400% 400% !important; 
+            animation: gradient-bg 5s ease infinite; 
+            display: flex; justify-content: center; align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .bg-low { background: var(--rarity-low) !important; }
+        .bg-mid { background: var(--rarity-mid) !important; }
+        .bg-high { background: var(--rarity-high) !important; }
+
+        .image-box img { width: 80%; height: 80%; object-fit: contain; }
+        .info-box { padding: 12px; }
+        .tag { background: rgba(255, 255, 255, 0.08); color: var(--text-sub); font-size: 9px; padding: 2px 8px; border-radius: 20px; display: inline-block; margin-bottom: 6px; text-transform: uppercase; }
+        .item-name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .item-value span { color: #ffd700; font-weight: 600; }
+        .item-old { font-size: 11px; color: #ff2d55; font-weight: 600; }
+
+        @keyframes gradient-bg { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    </style>
+</head>
+<body>
+
+    <div id="pickerModal">
+        <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+            <b style="font-size:14px">CHỌN VẬT PHẨM</b>
+            <button onclick="closePicker()" style="background:none; border:none; color:#fff; font-size:24px;">×</button>
+        </div>
+        <div class="picker-grid" id="pickerGrid"></div>
+    </div>
+
+    <div id="mainContent">
+        <div class="header">
+            <div class="header-top">
+                <h1>BADDIES BRAWL VALUE 🌸</h1>
+                <div style="opacity: 0.5; font-size: 20px;">☰</div>
+            </div>
+            <div class="verified-badge">
+                <div class="v-dot"></div>
+                <span class="v-text">Official</span>
+                <span class="v-sub">• Verified by Peheoo (No Login) Update 5/15</span>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search item name..." onkeyup="filterItems()">
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="setFilter('All', this)">All Items</button>
+            <button class="filter-btn btn-trade-toggle" onclick="toggleTrade()">TRADE</button>
+            <button class="filter-btn" onclick="setFilter('Style', this)">Style</button>
+            <button class="filter-btn" onclick="setFilter('Skin', this)">Skin</button>
+            <button class="filter-btn" onclick="setFilter('Aura', this)">Aura</button>
+            <button class="filter-btn" onclick="setFilter('Special Weapons', this)">Special</button>
+        </div>
+
+        <div class="trade-section" id="tradeSection">
+            <div class="trade-wrapper">
+                <div>
+                    <div class="side-title" style="color:var(--accent-red)">You</div>
+                    <div class="trade-grid" id="gridYou">
+                        <div class="trade-slot" onclick="openPicker('you', 0)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 1)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 2)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 3)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 4)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 5)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 6)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 7)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('you', 8)"><span class="add-plus">+</span></div>
+                    </div>
+                    <div class="side-total">Value: <span id="totalYou">0</span></div>
+                </div>
+                <div>
+                    <div class="side-title" style="color:#00d2ff">THEM</div>
+                    <div class="trade-grid" id="gridThem">
+                        <div class="trade-slot" onclick="openPicker('them', 0)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 1)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 2)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 3)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 4)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 5)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 6)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 7)"><span class="add-plus">+</span></div>
+                        <div class="trade-slot" onclick="openPicker('them', 8)"><span class="add-plus">+</span></div>
+                    </div>
+                    <div class="side-total">Value: <span id="totalThem">0</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="all-items-title" id="listTitle">All Items</div>
+
+        <div class="grid-container" id="itemGrid">
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/7Z8bVQ4d/5d9d7c932f69c220afd5b248c74ba066.png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Monkey Style</div><div class="item-value">Value: <span>8.500</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/Ss6pmV3R/66c6629cb38610dd030654bcb36dced8.png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Princess style</div><div class="item-value">Value: <span>9.700</span></div><div class="item-old">Old: 11.000</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/zv4wpSDW/b01999b81cc4701dd38d4ba51a8ffc52-(1).png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">EggRose</div><div class="item-value">Value: <span>15.540</span></div><div class="item-old">Old: 9.820</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/PrZV9PGb/b01999b81cc4701dd38d4ba51a8ffc52.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Arctic</div><div class="item-value">Value: <span>47.000</span></div><div class="item-old">Old: 44.560</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/RZd2nXx0/2b23f0abfb9b978248d01cd669837058.png"></div><div class="info-box"><span class="tag">Aura</span><div class="item-name">Celestial Wings</div><div class="item-value">Value: <span>15.600</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/3JndWF6k/e5520dc6533b59136756a2eaa58f472b.png"></div><div class="info-box"><span class="tag">Aura</span><div class="item-name">LipSmash</div><div class="item-value">Value: <span>4.850</span></div><div class="item-old">Old: 257</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/c49Ld4gx/9a223c3b0772c2c0dceba6be69072734-(2).png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Bonk Style</div><div class="item-value">Value: <span>1.700</span></div><div class="item-old">Old: 600</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/rFmqZXhN/9a223c3b0772c2c0dceba6be69072734.png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Elf Style</div><div class="item-value">Value: <span>3.653</span></div><div class="item-old">Old: 4.500</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/Y0SBPYxG/1f5c9c97731f782b83f50d535b1d628c.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Blood Reaver</div><div class="item-value">Value: <span>6.780</span></div><div class="item-old">Old: 4.500</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/C1F3ZkXm/d352bcae62ef926c07436716ca738917.png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Icebreaker Style</div><div class="item-value">Value: <span>6.000</span></div><div class="item-old">Old: 5.800</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/qM9Ws9W5/1777467145852.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Spiderlord</div><div class="item-value">Value: <span>5.600</span></div><div class="item-old">Old: 8.400</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/N0xVwLFd/8cdfc5dbcee53d8094bae03297c4d4e6.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Omen</div><div class="item-value">Value: <span>7.500</span></div><div class="item-old">Old: 11.000</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/02JByVrs/1777463502312.png"></div><div class="info-box"><span class="tag">Aura</span><div class="item-name">Bat</div><div class="item-value">Value: <span>59.800</span></div><div class="item-old">Old: 50.000</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/52dkY8CM/e3975e9e1f49870cc17111d5fa93f719-(2).png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Witch Style</div><div class="item-value">Value: <span>12.900</span></div><div class="item-old">Old: 20.000</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/Lsvyb7Qv/e3975e9e1f49870cc17111d5fa93f719.png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Zombie Style</div><div class="item-value">Value: <span>12.900</span></div><div class="item-old">Old: 9.980</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/ryRBDVPq/7e891b57300ffb2641afabba87474283.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Ghost</div><div class="item-value">Value: <span>34.750</span></div><div class="item-old">Old: 17.000</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/BQKZzcQK/Screenshot-20260502-084851.png"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">Bunny Style</div><div class="item-value">Value: <span>8.100</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/j2Tnjgjp/Screenshot-20260502-093129.png"></div><div class="info-box"><span class="tag">Special Weapons</span><div class="item-name">Cupid Bow</div><div class="item-value">Value: <span>6.500</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/Sxd5BJJr/Screenshot-20260502-093409.png"></div><div class="info-box"><span class="tag">Special Weapons</span><div class="item-name">Toxic Mace</div><div class="item-value">Value: <span>9.500</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/wvyGR2Fn/Screenshot-20260502-093425.png"></div><div class="info-box"><span class="tag">Special Weapons</span><div class="item-name">Cosmic Magnet</div><div class="item-value">Value: <span>-</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/HsChjQM7/Screenshot-20260502-180718.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Starry</div><div class="item-value">Value: <span>17.700</span></div><div class="item-old">Old: 17.000</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/Hk6ZSRhZ/Screenshot-20260502-184425.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Cherry Pop</div><div class="item-value">Value: <span>0</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://i.postimg.cc/CKtv0DYk/Screenshot-20260502-184845.png"></div><div class="info-box"><span class="tag">Skin</span><div class="item-name">Seraph</div><div class="item-value">Value: <span>3.800</span></div><div class="item-old">Old: -</div></div></div>
+
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 1</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 2</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 3</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 4</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 5</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 6</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 7</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 8</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 9</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 10</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 11</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 12</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 13</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 14</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 15</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 16</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 17</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 18</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 19</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 20</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 21</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 22</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 23</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 24</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 25</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 26</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 27</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 28</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 29</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+            <div class="item-card"><div class="image-box"><img src="https://via.placeholder.com/150"></div><div class="info-box"><span class="tag">Style</span><div class="item-name">New Item 30</div><div class="item-value">Value: <span>1.000</span></div><div class="item-old">Old: -</div></div></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSide = '';
+        let currentSlotIdx = 0;
+        let listItemsData = [];
+
+        window.onload = function() {
+            updateAllBackgrounds(); 
+            collectData();
+            spawnSakura();
+            setInterval(spawnSakura, 3000); 
+        };
+
+        function spawnSakura() {
+            const petalCount = 15;
+            for(let i=0; i<petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'sakura-petal';
+                petal.innerText = '🌸';
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                petal.style.opacity = Math.random();
+                petal.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                document.body.appendChild(petal);
+                setTimeout(() => { petal.remove(); }, 7000);
+            }
+        }
+
+        function updateAllBackgrounds() {
+            const cards = document.querySelectorAll('.item-card');
+            cards.forEach(card => {
+                const valSpan = card.querySelector('.item-value span');
+                const box = card.querySelector('.image-box');
+                if (!valSpan || !box) return;
+                const valStr = valSpan.innerText.replace(/\./g, '').trim();
+                const val = parseInt(valStr) || 0;
+                box.classList.remove('bg-low', 'bg-mid', 'bg-high');
+                if (val >= 20000) box.classList.add('bg-high');
+                else if (val >= 5000) box.classList.add('bg-mid');
+                else box.classList.add('bg-low');
+            });
+        }
+
+        function collectData() {
+            listItemsData = [];
+            document.querySelectorAll('.item-card').forEach(card => {
+                let imgTag = card.querySelector('img');
+                imgTag.onerror = function() {
+                    this.src = "https://via.placeholder.com/150?text=No+Image";
+                };
+                listItemsData.push({
+                    name: card.querySelector('.item-name').innerText,
+                    img: imgTag.src,
+                    val: card.querySelector('.item-value span').innerText,
+                    tag: card.querySelector('.tag').innerText
+                });
+            });
+        }
+
+        function toggleTrade() {
+            let s = document.getElementById('tradeSection');
+            s.style.display = (s.style.display === 'block' ? 'none' : 'block');
+        }
+
+        function openPicker(side, idx) {
+            let sideId = side === 'you' ? 'gridYou' : 'gridThem';
+            let slot = document.getElementById(sideId).children[idx];
+            if(slot.querySelector('img')) {
+                slot.innerHTML = '<span class="add-plus">+</span>';
+                updateTradeTotal(); return;
+            }
+            currentSide = side; currentSlotIdx = idx;
+            document.getElementById('pickerModal').style.display = 'flex';
+            let grid = document.getElementById('pickerGrid');
+            grid.innerHTML = '';
+            listItemsData.forEach(item => {
+                let d = document.createElement('div');
+                d.className = 'p-card';
+                d.innerHTML = `<img src="${item.img}"><div>${item.name}</div>`;
+                d.onclick = () => {
+                    slot.innerHTML = `<img src="${item.img}"><span style="display:none" class="v-val">${item.val}</span>`;
+                    updateTradeTotal(); closePicker();
+                };
+                grid.appendChild(d);
+            });
+        }
+
+        function updateTradeTotal() {
+            ['You', 'Them'].forEach(s => {
+                let total = 0;
+                document.querySelectorAll(`#grid${s} .v-val`).forEach(v => {
+                    total += parseInt(v.innerText.replace(/\./g, '')) || 0;
+                });
+                document.getElementById(`total${s}`).innerText = total.toLocaleString('en-US');
+            });
+        }
+
+        function closePicker() { document.getElementById('pickerModal').style.display = 'none'; }
+
+        function setFilter(cat, btn) {
+            let buttons = document.getElementsByClassName('filter-btn');
+            for(let b of buttons) b.classList.remove('active');
+            btn.classList.add('active');
+            
+            let displayTitle = cat;
+            if (cat === 'All') displayTitle = 'All Items';
+            else if (cat === 'Special Weapons') displayTitle = 'Special Weapons';
+            else displayTitle = cat + 's';
+            
+            document.getElementById('listTitle').innerText = displayTitle;
+            
+            let cards = document.getElementsByClassName('item-card');
+            for (let i = 0; i < cards.length; i++) {
+                let tag = cards[i].querySelector('.tag').innerText.trim();
+                cards[i].style.display = (cat === 'All' || tag === cat) ? "block" : "none";
+            }
+        }
+
+        function filterItems() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('item-card');
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].querySelector('.item-name').innerText.toLowerCase();
+                cards[i].style.display = name.includes(input) ? "block" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
